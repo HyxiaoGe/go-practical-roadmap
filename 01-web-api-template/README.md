@@ -106,9 +106,32 @@ make build
 配置文件位于 `configs/config.yaml`，可以根据需要修改以下配置：
 
 - 服务器端口和主机
-- 数据库连接信息
+- 数据库连接信息（支持SQLite、PostgreSQL、MySQL）
 - JWT密钥和过期时间
 - 日志级别和输出方式
+
+#### 数据库配置示例
+
+1. **SQLite（默认，适合开发环境）**：
+```yaml
+database:
+  driver: "sqlite"
+  dsn: "./data/app.db"
+```
+
+2. **PostgreSQL（适合生产环境）**：
+```yaml
+database:
+  driver: "postgres"
+  dsn: "host=localhost user=postgres password=postgres dbname=webapi port=5432 sslmode=disable"
+```
+
+3. **MySQL（适合生产环境）**：
+```yaml
+database:
+  driver: "mysql"
+  dsn: "user:password@tcp(localhost:3306)/dbname?charset=utf8mb4&parseTime=True&loc=Local"
+```
 
 ## 测试
 
