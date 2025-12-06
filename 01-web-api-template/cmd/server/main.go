@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/yourname/01-web-api-template/internal/app"
+	"go-practical-roadmap/01-web-api-template/internal/app"
 )
 
 func main() {

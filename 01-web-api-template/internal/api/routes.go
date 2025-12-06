@@ -3,8 +3,8 @@ package api
 import (
 	"net/http"
 
-	"github.com/yourname/01-web-api-template/internal/middleware"
-	"github.com/yourname/01-web-api-template/pkg/logger"
+	"go-practical-roadmap/01-web-api-template/internal/middleware"
+	"go-practical-roadmap/01-web-api-template/pkg/logger"
 )
 
 // SetupRoutes 设置路由

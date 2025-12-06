@@ -9,11 +9,12 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/yourname/01-web-api-template/internal/api"
-	"github.com/yourname/01-web-api-template/internal/config"
-	"github.com/yourname/01-web-api-template/internal/model"
-	"github.com/yourname/01-web-api-template/pkg/db"
-	"github.com/yourname/01-web-api-template/pkg/logger"
+	"go-practical-roadmap/01-web-api-template/internal/api"
+	"go-practical-roadmap/01-web-api-template/internal/config"
+	"go-practical-roadmap/01-web-api-template/internal/model"
+	"go-practical-roadmap/01-web-api-template/pkg/db"
+	"go-practical-roadmap/01-web-api-template/pkg/logger"
+	"go.uber.org/zap"
 )
 
 // App 应用结构体
@@ -77,7 +78,7 @@ func (a *App) Run() error {
 	}
 
 	// 启动服务器
-	logger.Info("Starting server", logger.String("addr", a.server.Addr))
+	logger.Info("Starting server", zap.String("addr", a.server.Addr))
 	if err := a.server.ListenAndServe(); err != nil && err != http.ErrServerClosed {
 		return fmt.Errorf("failed to start server: %w", err)
 	}

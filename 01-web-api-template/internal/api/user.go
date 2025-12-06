@@ -3,8 +3,8 @@ package api
 import (
 	"net/http"
 
-	"github.com/yourname/01-web-api-template/internal/service"
-	"github.com/yourname/01-web-api-template/pkg/logger"
+	"go-practical-roadmap/01-web-api-template/internal/service"
+	"go-practical-roadmap/01-web-api-template/pkg/logger"
 )
 
 // UserController 用户控制器

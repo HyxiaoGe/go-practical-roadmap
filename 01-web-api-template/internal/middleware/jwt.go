@@ -6,8 +6,9 @@ import (
 	"time"
 
 	"github.com/golang-jwt/jwt/v5"
-	"github.com/yourname/01-web-api-template/internal/config"
-	"github.com/yourname/01-web-api-template/pkg/logger"
+	"go-practical-roadmap/01-web-api-template/internal/config"
+	"go-practical-roadmap/01-web-api-template/pkg/logger"
+	"go.uber.org/zap"
 )
 
 // Claims JWT声明结构体
@@ -88,9 +89,9 @@ func JWTAuthMiddleware(next http.Handler) http.Handler {
 		tokenString := strings.TrimPrefix(authHeader, "Bearer ")
 
 		// 验证令牌
-		claims, err := ValidateToken(tokenString)
+		_, err := ValidateToken(tokenString)
 		if err != nil {
-			logger.Warn("Invalid token", logger.Error(err))
+			logger.Warn("Invalid token", zap.Error(err))
 			http.Error(w, "Invalid token", http.StatusUnauthorized)
 			return
 		}

@@ -3,8 +3,8 @@ package service
 import (
 	"errors"
 
-	"github.com/yourname/01-web-api-template/internal/model"
-	"github.com/yourname/01-web-api-template/internal/repository"
+	"go-practical-roadmap/01-web-api-template/internal/model"
+	"go-practical-roadmap/01-web-api-template/internal/repository"
 	"golang.org/x/crypto/bcrypt"
 )
 

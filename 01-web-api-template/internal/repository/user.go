@@ -1,7 +1,7 @@
 package repository
 
 import (
-	"github.com/yourname/01-web-api-template/internal/model"
+	"go-practical-roadmap/01-web-api-template/internal/model"
 	"gorm.io/gorm"
 )
 

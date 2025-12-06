@@ -47,6 +47,32 @@
 ### 环境要求
 - Go 1.21+
 
+### 环境设置
+
+如果系统中没有安装Go，可以使用以下脚本自动下载和设置：
+
+```bash
+# 进入项目目录
+cd 01-web-api-template
+
+# 运行环境设置脚本
+./scripts/setup_env.sh
+```
+
+或者手动安装Go：
+
+```bash
+# 下载Go
+wget https://go.dev/dl/go1.21.5.linux-amd64.tar.gz
+
+# 解压到本地目录
+mkdir -p $HOME/go-install
+tar -C $HOME/go-install -xzf go1.21.5.linux-amd64.tar.gz
+
+# 设置环境变量
+export PATH=$HOME/go-install/go/bin:$PATH
+```
+
 ### 构建和运行
 
 ```bash
