@@ -1,6 +1,8 @@
 package db
 
 import (
+	"gorm.io/driver/mysql"
+	"gorm.io/driver/postgres"
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
 )
@@ -15,6 +17,10 @@ func Connect(dsn string, driver string) error {
 	switch driver {
 	case "sqlite":
 		DB, err = gorm.Open(sqlite.Open(dsn), &gorm.Config{})
+	case "postgres":
+		DB, err = gorm.Open(postgres.Open(dsn), &gorm.Config{})
+	case "mysql":
+		DB, err = gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	default:
 		// 默认使用sqlite
 		DB, err = gorm.Open(sqlite.Open(dsn), &gorm.Config{})

@@ -40,7 +40,7 @@
 - **日志**: Zap
 - **配置管理**: Viper
 - **认证**: JWT
-- **数据库**: SQLite（开发环境）
+- **数据库**: SQLite/PostgreSQL/MySQL（可通过配置切换）
 
 ## 启动方式
 

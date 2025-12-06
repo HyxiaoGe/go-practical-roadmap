@@ -6,8 +6,14 @@ server:
   mode: "debug" # debug, release, test
 
 database:
-  driver: "sqlite"
-  dsn: "./data/app.db"
+  driver: "sqlite" # 可选: sqlite, postgres, mysql
+  dsn: "./data/app.db" # SQLite文件路径
+  # PostgreSQL示例配置:
+  # driver: "postgres"
+  # dsn: "host=localhost user=postgres password=postgres dbname=webapi port=5432 sslmode=disable"
+  # MySQL示例配置:
+  # driver: "mysql"
+  # dsn: "user:password@tcp(localhost:3306)/dbname?charset=utf8mb4&parseTime=True&loc=Local"
   max_idle_conns: 10
   max_open_conns: 100
   conn_max_lifetime: 3600
