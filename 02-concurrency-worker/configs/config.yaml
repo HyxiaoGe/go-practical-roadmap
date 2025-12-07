@@ -1,0 +1,25 @@
+server:
+  port: 8080
+  host: "localhost"
+  mode: "debug"
+
+worker:
+  min_workers: 5
+  max_workers: 50
+  enable_auto_scaling: true
+  scale_up_threshold: 0.8
+  scale_down_threshold: 0.3
+  scale_check_interval: "30s"
+  shutdown_timeout: "30s"
+
+task:
+  queue_capacity: 1000
+  max_concurrent_tasks: 100
+  default_task_timeout: "5m"
+  cleanup_completed_tasks_after: "1h"
+
+logger:
+  level: "debug"
+  format: "console"
+  output: "stdout"
+  file_path: "./logs/worker.log"
