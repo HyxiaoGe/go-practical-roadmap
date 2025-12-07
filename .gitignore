@@ -32,3 +32,13 @@ go.work.sum
 .vscode/
 
 docs/
+
+# Build outputs
+main
+build/
+bin/
+dist/
+
+# Logs
+logs/
+*.log
