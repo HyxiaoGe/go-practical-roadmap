@@ -1,0 +1,29 @@
+# 忽略.git目录
+.git
+
+# 忽略测试文件
+*.test
+*/testdata/
+
+# 忽略IDE配置文件
+.vscode/
+.idea/
+
+# 忽略日志文件
+*.log
+
+# 忽略临时文件
+tmp/
+temp/
+
+# 忽略构建产物
+main
+build/
+
+# 忽略环境文件
+.env
+.env.local
+.env.*.local
+
+# 忽略数据目录（在Docker中会重新创建）
+data/
