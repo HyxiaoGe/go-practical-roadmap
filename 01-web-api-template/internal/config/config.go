@@ -2,6 +2,7 @@ package config
 
 import (
 	"fmt"
+	"strings"
 	"time"
 
 	"github.com/spf13/viper"
@@ -79,8 +80,14 @@ func LoadConfig() (*Config, error) {
 	viper.SetDefault("logger.format", "console")
 	viper.SetDefault("logger.output", "stdout")
 
+	// 设置环境变量前缀
+	viper.SetEnvPrefix("APP")
+
 	// 自动绑定环境变量
 	viper.AutomaticEnv()
+
+	// 设置环境变量替换规则
+	viper.SetEnvKeyReplacer(strings.NewReplacer(".", "_"))
 
 	if err := viper.ReadInConfig(); err != nil {
 		return nil, fmt.Errorf("failed to read config file: %w", err)

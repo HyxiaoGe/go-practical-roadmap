@@ -45,9 +45,10 @@
 ## 启动方式
 
 ### 环境要求
-- Go 1.21+
+- Go 1.21+ (本地开发)
+- Docker & Docker Compose (容器化部署)
 
-### 环境设置
+### 本地开发
 
 如果系统中没有安装Go，可以使用以下脚本自动下载和设置：
 
@@ -73,7 +74,7 @@ tar -C $HOME/go-install -xzf go1.21.5.linux-amd64.tar.gz
 export PATH=$HOME/go-install/go/bin:$PATH
 ```
 
-### 构建和运行
+#### 本地构建和运行
 
 ```bash
 # 克隆项目
@@ -93,6 +94,29 @@ make run
 make build
 ./build/web-api-template
 ```
+
+### Docker容器化部署
+
+项目支持Docker容器化部署，可以使用Docker Compose一键启动：
+
+```bash
+# 构建并启动所有服务
+docker-compose up --build
+
+# 后台运行
+docker-compose up -d
+
+# 查看日志
+docker-compose logs -f
+
+# 停止所有服务
+docker-compose down
+```
+
+Docker Compose会启动以下服务：
+- Web API服务 (端口: 8080)
+- PostgreSQL数据库 (端口: 5432)
+- pgAdmin管理界面 (端口: 5050)
 
 ### API端点
 

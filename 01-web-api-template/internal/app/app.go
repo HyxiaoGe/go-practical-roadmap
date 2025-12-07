@@ -9,9 +9,12 @@ import (
 	"syscall"
 	"time"
 
+	"github.com/gin-gonic/gin"
 	"go-practical-roadmap/01-web-api-template/internal/api"
 	"go-practical-roadmap/01-web-api-template/internal/config"
 	"go-practical-roadmap/01-web-api-template/internal/model"
+	"go-practical-roadmap/01-web-api-template/internal/repository"
+	"go-practical-roadmap/01-web-api-template/internal/service"
 	"go-practical-roadmap/01-web-api-template/pkg/db"
 	"go-practical-roadmap/01-web-api-template/pkg/logger"
 	"go.uber.org/zap"
@@ -68,12 +71,19 @@ func autoMigrate() error {
 
 // Run 启动应用
 func (a *App) Run() error {
+	// 设置Gin模式
+	gin.SetMode(config.GlobalConfig.Server.Mode)
+
+	// 创建用户仓库和服务
+	userRepo := repository.NewUserRepository(db.GetDB())
+	userService := service.NewUserService(userRepo)
+
 	// 创建路由
-	router := api.SetupRoutes()
+	router := api.SetupRoutes(userService)
 
 	// 创建HTTP服务器
 	a.server = &http.Server{
-		Addr:    ":8080",
+		Addr:    fmt.Sprintf("%s:%d", config.GlobalConfig.Server.Host, config.GlobalConfig.Server.Port),
 		Handler: router,
 	}
 
